@@ -1,43 +1,246 @@
-<!doctype html>
-<html>
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+:root {
+  --bg: #000000;
 
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Lodestar Lyric Catelogue</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="header">
-    <div class="brand">
-   
-   <div class="logoText" aria-label="The Lodestar Syndicate">
-    <div class="logoThe">THE</div>
-    <div class="logoLodestar">LODESTAR</div>
-    <div class="logoSyndicate">SYNDICATE</div>
-   </div>
+  /* TEXT COLORS */
+  --white: #ffffff;
+  --white-soft: rgba(255,255,255,0.75);
+  --white-muted: rgba(255,255,255,0.55);
+
+  /* ACCENT */
+  --gold-dark: #9e7c2f;
+  --gold-mid: #d4af37;
+  --gold-light: #f1d98a;
+
+  /* BORDERS */
+  --border: rgba(255,255,255,0.25);
+}
+
+body {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.02em;
+  background: var(--bg);
+  color: var(--white);
+}
+
+/* ---------- Header ---------- */
+:root{
+  --gold-dark: #8f6e2f;
+  --gold-mid: #caa64a;
+  --gold-light: #f2de9a;
+
+  --gold-text: linear-gradient(
+    135deg,
+    var(--gold-dark) 0%,
+    var(--gold-mid) 45%,
+    var(--gold-light) 60%,
+    var(--gold-mid) 75%,
+    var(--gold-dark) 100%
+  );
+}
+
+.header {
+  padding: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+
+}
+
+.logo {
+  height: 84px;
+  width: auto;
+  border: none;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+h1 {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  color: var(--white);
+}
+
+.sub {
+  margin-top: 0;
+  color: var(--white-soft);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.logoText {
+  display: grid;
+  line-height: 0.9;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Apply the metallic gradient to ALL logo lines */
+.logoThe, .logoLodestar, .logoSyndicate {
+  background: var(--gold-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Sizes to mimic your stacked logo */
+.logoThe {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+}
+
+.logoLodestar {
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.logoSyndicate {
+  font-size: 38px;
+  font-weight: 700;
+}
 
 
+/* ---------- Main Layout ---------- */
+.main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
 
-      <div>
-        <h1>Lyric Catalogue</h1>
-        <p class="sub">Search songs → jump to lyrics → sing </p>
-      </div>
-    </div>
-  </header>
+.searchRow {
+  display: flex;
+  justify-content: center;
+  max-width: 900px;      /* SAME as .main / results */
+  margin: 0 auto 12px;   /* center it */
+}
 
-  <main class="main">
-    <div class="searchRow">
-      <input id="q" placeholder="Search song or artist…" />
-    </div>
+/* ---------- Search Bar ---------- */
+input {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
 
-    <div id="status" class="status"></div>
-    <div id="results" class="results"></div>
-  </main>
+  background: #ffffff;
+  color: #000000;                 /* IMPORTANT */
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.06em;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+::placeholder {
+  color: #666;
+  letter-spacing: 0.06em;
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.25);
+
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+
+   background: var(--gold-text);
+   color: #000;
+  );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    0 6px 18px rgba(212,175,55,0.25);
+
+  transition: transform 0.15s ease,
+              box-shadow 0.15s ease,
+              filter 0.15s ease;
+}
+
+
+button:hover {
+  filter: brightness(1.05);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.6),
+    0 8px 24px rgba(212,175,55,0.35);
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,0.25),
+    0 4px 10px rgba(212,175,55,0.25);
+}
+
+
+/* ---------- Results ---------- */
+.status {
+  margin-top: 12px;
+  color: var(--white-muted);
+}
+
+.results {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: rgba(255,255,255,0.03);
+}
+
+.art {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.05);
+}
+
+.meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-weight: 650;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--white);
+}
+
+.artist {
+  color: var(--white-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+a {
+  color: var(--white);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: 12px;
+}
+
+a:hover {
+  background: rgba(255,255,255,0.08);
+}
