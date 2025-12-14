@@ -244,3 +244,48 @@ a {
 a:hover {
   background: rgba(255,255,255,0.08);
 }
+
+/* --- Mobile layout: stop header squish + match search width to cards --- */
+@media (max-width: 640px) {
+
+  /* Keep everything within the screen */
+  body { overflow-x: hidden; }
+
+  /* Header becomes stacked */
+  .brand {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  /* Make the right-side title block align left + breathe */
+  .brand > div:last-child {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 22px;
+    line-height: 1.1;
+  }
+
+  .sub {
+    line-height: 1.25;
+  }
+
+  /* Search bar same width as the song cards */
+  .searchRow {
+    width: 100%;
+    max-width: 900px;   /* still matches desktop */
+    justify-content: flex-start;
+  }
+
+  .searchRow input {
+    width: 100%;
+  }
+
+  /* Slightly smaller padding so cards + search don’t feel cramped */
+  .main {
+    padding: 16px;
+  }
+}
+
