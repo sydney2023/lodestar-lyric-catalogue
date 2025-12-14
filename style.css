@@ -244,34 +244,3 @@ a {
 a:hover {
   background: rgba(255,255,255,0.08);
 }
-
-/* --- Mobile fix: keep "Find lyrics" visible --- */
-@media (max-width: 640px) {
-  .card {
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
-
-  .meta {
-    flex: 1 1 calc(100% - 72px);
-    min-width: 0;
-  }
-
-  .links {
-    flex: 0 0 100%;           /* FORCE it onto its own line */
-    width: 100%;
-    margin-top: 10px;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .links a {
-    white-space: nowrap;
-  }
-}
-
-@media (max-width: 640px) {
-  .main { padding: 16px; }
-  body { overflow-x: hidden; }
-}
-
